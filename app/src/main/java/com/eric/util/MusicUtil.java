@@ -37,24 +37,24 @@ public class MusicUtil {
 			cursor.moveToNext();
 			Music music=new Music();
 			long id = cursor.getLong(cursor
-					.getColumnIndex(MediaStore.Audio.Media._ID));	//音乐id 
+					.getColumnIndex(MediaStore.Audio.Media._ID));
 			String title = cursor.getString((cursor	
-					.getColumnIndex(MediaStore.Audio.Media.TITLE))); // 音乐标题
+					.getColumnIndex(MediaStore.Audio.Media.TITLE)));
 			String artist = cursor.getString(cursor
-					.getColumnIndex(MediaStore.Audio.Media.ARTIST)); // 艺术家
+					.getColumnIndex(MediaStore.Audio.Media.ARTIST));
 			String album = cursor.getString(cursor
-					.getColumnIndex(MediaStore.Audio.Media.ALBUM));	//专辑
+					.getColumnIndex(MediaStore.Audio.Media.ALBUM));
 			String displayName = cursor.getString(cursor
 					.getColumnIndex(MediaStore.Audio.Media.DISPLAY_NAME));
 			long albumId = cursor.getInt(cursor.getColumnIndex(MediaStore.Audio.Media.ALBUM_ID));
 			long duration = cursor.getLong(cursor
-					.getColumnIndex(MediaStore.Audio.Media.DURATION)); // 时长
+					.getColumnIndex(MediaStore.Audio.Media.DURATION));
 			long size = cursor.getLong(cursor
-					.getColumnIndex(MediaStore.Audio.Media.SIZE)); // 文件大小
+					.getColumnIndex(MediaStore.Audio.Media.SIZE));
 			String url = cursor.getString(cursor
-					.getColumnIndex(MediaStore.Audio.Media.DATA)); // 文件路径
+					.getColumnIndex(MediaStore.Audio.Media.DATA));
 			int isMusic = cursor.getInt(cursor
-					.getColumnIndex(MediaStore.Audio.Media.IS_MUSIC)); // 是否为音乐
+					.getColumnIndex(MediaStore.Audio.Media.IS_MUSIC));
 			if(isMusic!=0){
 				music.setId(id);
 				music.setTitle(title);
@@ -113,20 +113,13 @@ public class MusicUtil {
 	public static Bitmap getDefaultArtwork(Context context,boolean small) {
 		BitmapFactory.Options opts = new BitmapFactory.Options();
 		opts.inPreferredConfig = Bitmap.Config.RGB_565;
-		if(small){	//返回小图片
+		if(small){	//锟斤拷锟斤拷小图片
 			return BitmapFactory.decodeStream(context.getResources().openRawResource(R.drawable.music5), null, opts);
 		}
 		return BitmapFactory.decodeStream(context.getResources().openRawResource(R.drawable.defaultalbum), null, opts);
 	}
 	
-	
-	/**
-	 * 从文件当中获取专辑封面位图
-	 * @param context
-	 * @param songid
-	 * @param albumid
-	 * @return
-	 */
+
 	private static Bitmap getArtworkFromFile(Context context, long songid, long albumid){
 		Bitmap bm = null;
 		if(albumid < 0 && songid < 0) {
@@ -150,34 +143,19 @@ public class MusicUtil {
 				}
 			}
 			options.inSampleSize = 1;
-			// 只进行大小判断
 			options.inJustDecodeBounds = true;
-			// 调用此方法得到options得到图片大小
 			BitmapFactory.decodeFileDescriptor(fd, null, options);
-			// 我们的目标是在800pixel的画面上显示
-			// 所以需要调用computeSampleSize得到图片缩放的比例
 			options.inSampleSize = 100;
-			// 我们得到了缩放的比例，现在开始正式读入Bitmap数据
 			options.inJustDecodeBounds = false;
 			options.inDither = false;
 			options.inPreferredConfig = Bitmap.Config.ARGB_8888;
-			
-			//根据options参数，减少所需要的内存
 			bm = BitmapFactory.decodeFileDescriptor(fd, null, options);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
 		return bm;
 	}
-	
-	/**
-	 * 获取专辑封面位图对象
-	 * @param context
-	 * @param song_id
-	 * @param album_id
-	 * @param allowdefalut
-	 * @return
-	 */
+
 	public static Bitmap getArtwork(Context context, long song_id, long album_id, boolean allowdefalut, boolean small){
 		if(album_id < 0) {
 			if(song_id < 0) {
@@ -198,20 +176,14 @@ public class MusicUtil {
 			try {
 				in = res.openInputStream(uri);
 				BitmapFactory.Options options = new BitmapFactory.Options();
-				//先制定原始大小
 				options.inSampleSize = 1;
-				//只进行大小判断
 				options.inJustDecodeBounds = true;
-				//调用此方法得到options得到图片的大小
 				BitmapFactory.decodeStream(in, null, options);
-				/** 我们的目标是在你N pixel的画面上显示。 所以需要调用computeSampleSize得到图片缩放的比例 **/
-				/** 这里的target为800是根据默认专辑图片大小决定的，800只是测试数字但是试验后发现完美的结合 **/
 				if(small){
 					options.inSampleSize = computeSampleSize(options, 40);
 				} else{
 					options.inSampleSize = computeSampleSize(options, 600);
 				}
-				// 我们得到了缩放比例，现在开始正式读入Bitmap数据
 				options.inJustDecodeBounds = false;
 				options.inDither = false;
 				options.inPreferredConfig = Bitmap.Config.ARGB_8888;
@@ -243,12 +215,6 @@ public class MusicUtil {
 		return null;
 	}
 
-	/**
-	 * 对图片进行合适的缩放
-	 * @param options
-	 * @param target
-	 * @return
-	 */
 	public static int computeSampleSize(Options options, int target) {
 		int w = options.outWidth;
 		int h = options.outHeight;

@@ -57,14 +57,12 @@ public class MusicFragment extends Fragment {
 	}
 
 	private class MusicListItemClickListener implements OnItemClickListener {
-		/**
-		 * 点击列表播放音乐
-		 */
+
 		@Override
 		public void onItemClick(AdapterView<?> parent, View view, int position,
 				long id) {
-			listPosition = position; // 获取列表点击的位置
-			playMusic(listPosition); // 播放音乐
+			listPosition = position;
+			playMusic(listPosition);
 		}
 
 		private void playMusic(int listPosition) {
@@ -72,8 +70,8 @@ public class MusicFragment extends Fragment {
 			Music mp3Info = musics.get(listPosition);
 			//musicTitle.setText(mp3Info.getTitle());
 			Bitmap bitmap = MusicUtil.getArtwork(getActivity(),
-					mp3Info.getId(), mp3Info.getAlbumId(), true, true);// 获取专辑位图对象，为小图
-			//musicAlbum.setImageBitmap(bitmap); // 这里显示专辑图片
+					mp3Info.getId(), mp3Info.getAlbumId(), true, true);
+			//musicAlbum.setImageBitmap(bitmap);
 			MusicInfo mInfo = new MusicInfo();
 			mInfo.setTitle(mp3Info.getTitle());
 			mInfo.setCurrentTime(currentTime);
@@ -84,8 +82,6 @@ public class MusicFragment extends Fragment {
 			Log.i("TAG", "@@"+getActivity().toString());
 			
 			// Intent intent = new Intent(getActivity(), AudioActivity.class);
-			// // 定义Intent对象，跳转到PlayerActivity
-			// // 添加一系列要传递的数据
 			// intent.putExtra("title", );
 			// intent.putExtra("url", );
 			// intent.putExtra("artist", );

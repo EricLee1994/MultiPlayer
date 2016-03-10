@@ -124,6 +124,7 @@ public final class R {
         public static final int action_settings=0x7f0a002b;
         public static final int albumImage=0x7f0a0006;
         public static final int audioTrack=0x7f0a0018;
+        public static final int btnBack=0x7f0a000d;
         public static final int btnNext=0x7f0a0029;
         public static final int btnPlayUrl=0x7f0a0028;
         public static final int btnPrevious=0x7f0a0027;
@@ -147,10 +148,9 @@ public final class R {
         public static final int music_title=0x7f0a0008;
         public static final int next_music=0x7f0a001d;
         public static final int play_music=0x7f0a001c;
-        public static final int play_queue=0x7f0a001f;
         public static final int previous_music=0x7f0a001e;
         public static final int relativeLayout2=0x7f0a001b;
-        public static final int repeat_music=0x7f0a000d;
+        public static final int repeat_music=0x7f0a001f;
         public static final int sb_player_voice=0x7f0a0014;
         public static final int seekbarLayout=0x7f0a0017;
         public static final int shuffle_music=0x7f0a000e;

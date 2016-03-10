@@ -31,7 +31,7 @@ public class AudioActivity extends Activity implements MediaPlayer.OnCompletionL
     private Button playBtn;
     private Button shuffleBtn;
     private Button nextBtn;
-    private Button queueBtn;
+    private Button backBtn;
     private SeekBar music_progressBar;
     private boolean isPlaying;
     private boolean isFirstTime = true;
@@ -102,7 +102,7 @@ public class AudioActivity extends Activity implements MediaPlayer.OnCompletionL
         playBtn = (Button) findViewById(R.id.play_music);
         shuffleBtn = (Button) findViewById(R.id.shuffle_music);
         nextBtn = (Button) findViewById(R.id.next_music);
-        queueBtn = (Button) findViewById(R.id.play_queue);
+        backBtn = (Button) findViewById(R.id.btnBack);
         music_progressBar = (SeekBar) findViewById(R.id.audioTrack);
         infoOperatingIV = (ImageView) findViewById(R.id.infoOperating);
     }
@@ -112,7 +112,7 @@ public class AudioActivity extends Activity implements MediaPlayer.OnCompletionL
         playBtn.setOnClickListener(viewOnClickListener);
         nextBtn.setOnClickListener(viewOnClickListener);
         shuffleBtn.setOnClickListener(viewOnClickListener);
-        queueBtn.setOnClickListener(viewOnClickListener);
+        backBtn.setOnClickListener(viewOnClickListener);
         repeatBtn.setOnClickListener(viewOnClickListener);
         previousBtn.setOnClickListener(viewOnClickListener);
     }
@@ -208,6 +208,12 @@ public class AudioActivity extends Activity implements MediaPlayer.OnCompletionL
                         status = 4;
                         repeatBtn.setClickable(true);
                     }
+                case R.id.btnBack:
+                    musicPlayer.stop();
+                    Log.i(TAG,"stop");
+                    Intent intent = new Intent();
+                    intent.setClass(AudioActivity.this,MainActivity.class);
+                    startActivity(intent);
             }
         }
     }

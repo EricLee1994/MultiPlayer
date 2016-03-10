@@ -12,11 +12,11 @@
         android:layout_alignParentTop="true" >
 
         <Button
-            android:id="@+id/repeat_music"
+            android:id="@+id/btnBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:background="@drawable/repeat_none_selector" />
+            android:background="@drawable/player_back_return" />
 
         <Button
             android:id="@+id/shuffle_music"
@@ -29,7 +29,7 @@
             android:id="@+id/musicTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@id/repeat_music"
+            android:layout_alignBaseline="@id/btnBack"
             android:layout_centerHorizontal="true"
             android:ellipsize="marquee"
             android:focusable="true"
@@ -195,12 +195,12 @@
                 android:background="@drawable/previous_music_selector" />
 
             <Button
-                android:id="@+id/play_queue"
+                android:id="@+id/repeat_music"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignBaseline="@+id/next_music"
                 android:layout_toRightOf="@+id/next_music"
-                android:background="@drawable/play_queue_selector" />
+                android:background="@drawable/repeat_none_selector" />
 
             <ImageButton
                 android:id="@+id/ibtn_player_voice"

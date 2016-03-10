@@ -1,50 +1,68 @@
-<?xml version="1.0" encoding="utf-8"?>  
+<?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_height="fill_parent" 
-    android:layout_width="fill_parent">
-    <SurfaceView android:id="@+id/surfaceView1"  
-        android:layout_height="fill_parent"
-        android:layout_width="fill_parent"></SurfaceView>
-    <LinearLayout android:layout_height="wrap_content"  
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_weight="1">
+
+    <SurfaceView
+        android:id="@+id/surfaceView1"
         android:layout_width="fill_parent"
-         android:layout_gravity="bottom"  
-        android:orientation="vertical">  
-        <LinearLayout android:orientation="horizontal"  
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="vertical">
+
+        <LinearLayout
             android:layout_width="fill_parent"
-             android:layout_height="wrap_content"  
-            android:layout_marginBottom="20dip">  
-            <SeekBar android:paddingRight="10dip" 
-                android:layout_gravity="center_vertical"  
-                android:paddingLeft="10dip" 
-                android:layout_weight="1.0"                                                                                                                                                                                                                                                                                                  
-                android:layout_height="wrap_content" 
-                android:layout_width="wrap_content"  
-                android:id="@+id/skbProgress" 
-                android:max="100"></SeekBar>  
-        </LinearLayout>  
-        <LinearLayout android:orientation="horizontal"  
-            android:layout_gravity="center_horizontal" 
-            android:layout_marginTop="4.0dip"  
-            android:layout_height="wrap_content" 
-            android:layout_width="wrap_content">   
-            <Button android:layout_height="wrap_content"  
-                android:layout_width="80dip" 
-                android:background="@drawable/previous" 
-                android:id="@+id/btnPrevious"></Button>  
-            <Button android:layout_width="wrap_content"  
-                android:layout_height="wrap_content" 
-                android:id="@+id/btnPlayUrl"  
-                android:background="@drawable/play">
-            </Button>  
-            <Button android:layout_height="wrap_content"  
-                android:layout_width="80dip" 
-                android:background="@drawable/next" 
-                android:id="@+id/btnNext"></Button>
-            <Button android:layout_height="wrap_content"  
-                android:layout_width="80dip" 
-                android:background="@drawable/search" 
-                android:id="@+id/btnadd"></Button>                 
-        </LinearLayout>  
-        
-    </LinearLayout>  
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dip"
+            android:orientation="horizontal">
+
+            <SeekBar
+                android:id="@+id/skbProgress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1.0"
+                android:max="100"
+                android:paddingLeft="10dip"
+                android:paddingRight="10dip" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="4.0dip"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnPrevious"
+                android:layout_width="80dip"
+                android:layout_height="wrap_content"
+                android:background="@drawable/previous" />
+
+            <Button
+                android:id="@+id/btnPlayUrl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/play"></Button>
+
+            <Button
+                android:id="@+id/btnNext"
+                android:layout_width="80dip"
+                android:layout_height="wrap_content"
+                android:background="@drawable/next" />
+
+            <Button
+                android:id="@+id/btnadd"
+                android:layout_width="80dip"
+                android:layout_height="wrap_content"
+                android:background="@drawable/search" />
+        </LinearLayout>
+
+    </LinearLayout>
 </FrameLayout><!-- From: file:/C:/Users/Eric/AndroidStudioProjects/MultiPlayer/app/src/main/res/layout/vplay_layout.xml -->

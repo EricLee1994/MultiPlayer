@@ -9,6 +9,7 @@ import com.eric.fragment.MusicFragment;
 import com.eric.fragment.SettingFragment;
 import com.eric.fragment.VideoFragment;
 import com.eric.mutiplayer.R;
+import com.eric.service.MusicPlayer;
 
 import android.content.Intent;
 import android.content.res.Resources;
@@ -17,6 +18,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -27,6 +29,8 @@ public class MainActivity extends FragmentActivity implements
     private TextView mTxtMusic, mTxtVideo, mTxtSetting;
     private int currIndex;// 当前页
     private Resources resources;
+    MusicPlayer musicPlayer;
+    String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +41,6 @@ public class MainActivity extends FragmentActivity implements
 
         InitTextView();
         InitViewPager();
-        // InitImage();
     }
 
     /*

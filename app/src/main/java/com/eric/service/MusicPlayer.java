@@ -19,8 +19,7 @@ public class MusicPlayer implements OnBufferingUpdateListener,
     private SeekBar skbProgress;
     private Timer mTimer = new Timer();
     private int position = 0;
-    private int status = 3;//播放状态下，默认顺序播放
-
+    String TAG ="MusicPlayer";
     public MusicPlayer(SeekBar skbProgress) {
 
         this.skbProgress = skbProgress;
@@ -61,24 +60,10 @@ public class MusicPlayer implements OnBufferingUpdateListener,
         ;
     };
 
-    public void play() {
+    public void playUrl(String audioUrl) {
         try {
             mediaPlayer.reset();
-            mediaPlayer.prepare();
-        } catch (IllegalStateException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-//		mediaPlayer.start();
-    }
-
-    public void playUrl(String videoUrl) {
-        try {
-            mediaPlayer.reset();
-            mediaPlayer.setDataSource(videoUrl);
+            mediaPlayer.setDataSource(audioUrl);
             mediaPlayer.prepare();
             // mediaPlayer.start();
         } catch (IllegalArgumentException e) {
@@ -97,7 +82,7 @@ public class MusicPlayer implements OnBufferingUpdateListener,
         position = mediaPlayer.getCurrentPosition();
         mediaPlayer.pause();
 
-        Log.e("$$$", "postion=" + position);
+        Log.e(TAG, "postion=" + position);
     }
 
     public void stop() {
@@ -106,14 +91,16 @@ public class MusicPlayer implements OnBufferingUpdateListener,
             mediaPlayer.stop();
             mediaPlayer.release();
             mediaPlayer = null;
-            Log.e("stop", "stop");
+            Log.e(TAG, "stop");
         }
     }
 
     @Override
     public void onCompletion(MediaPlayer arg0) {
         // TODO Auto-generated method stub
-        Log.e("mediaPlayer", "onCompletion");
+        mediaPlayer.release();
+        Log.e(TAG, "onCompletion");
+        Log.e(TAG, "release");
     }
 
     @Override
@@ -132,7 +119,7 @@ public class MusicPlayer implements OnBufferingUpdateListener,
             mediaPlayer.seekTo(position);
         }
         mediaPlayer.start();
-        Log.i("mediaPlayer", "onPrepared");
+        Log.i(TAG, "onPrepared");
     }
 
 }
