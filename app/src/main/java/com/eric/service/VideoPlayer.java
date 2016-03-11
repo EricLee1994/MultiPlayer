@@ -125,7 +125,7 @@ public class VideoPlayer implements MediaPlayer.OnBufferingUpdateListener,
     }
 
     public void playUrl(String videoUrl) {
-        Log.e(TAG, "videoUrl111��" + videoUrl);
+        Log.e(TAG, "videoUrl11" + videoUrl);
 
         mVideoUrl = videoUrl;
 
@@ -236,8 +236,6 @@ public class VideoPlayer implements MediaPlayer.OnBufferingUpdateListener,
         // TODO Auto-generated method stub
         videoWidth = mediaPlayer.getVideoWidth();
         videoHeight =mediaPlayer.getVideoHeight();
-//        videoWidth = 1280;
-//        videoHeight = 720;
         Log.i(TAG, "width =" + videoWidth);
         Log.i(TAG, "height =" + videoHeight);
         if (videoWidth > screenWidth || videoHeight > screenHeight) {

@@ -210,10 +210,8 @@ public class AudioActivity extends Activity implements MediaPlayer.OnCompletionL
                     }
                 case R.id.btnBack:
                     musicPlayer.stop();
-                    Log.i(TAG,"stop");
-                    Intent intent = new Intent();
-                    intent.setClass(AudioActivity.this,MainActivity.class);
-                    startActivity(intent);
+                    Log.i(TAG, "stop");
+                    finish();
             }
         }
     }

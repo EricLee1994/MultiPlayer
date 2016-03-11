@@ -5,7 +5,6 @@
       <module fileurl="file://$PROJECT_DIR$/MultiPlayer.iml" filepath="$PROJECT_DIR$/MultiPlayer.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/multiplayer/multiplayer.iml" filepath="$PROJECT_DIR$/multiplayer/multiplayer.iml" />
-      <module fileurl="file://$PROJECT_DIR$/multiplayer/multiplayer.iml" filepath="$PROJECT_DIR$/multiplayer/multiplayer.iml" />
     </modules>
   </component>
 </project>
