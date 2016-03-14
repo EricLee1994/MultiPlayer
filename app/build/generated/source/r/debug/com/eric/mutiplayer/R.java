@@ -129,7 +129,7 @@ public final class R {
         public static final int btnPlayUrl=0x7f0a002a;
         public static final int btnPrevious=0x7f0a0029;
         public static final int btnSearch=0x7f0a0026;
-        public static final int btnadd=0x7f0a002c;
+        public static final int btnVideoBack=0x7f0a002c;
         public static final int current_progress=0x7f0a0019;
         public static final int editUrl=0x7f0a0024;
         public static final int final_progress=0x7f0a001a;

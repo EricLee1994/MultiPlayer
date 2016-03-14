@@ -41,12 +41,12 @@ public class AudioActivity extends Activity implements MediaPlayer.OnCompletionL
     private String url;
     private int listPosition;
     private int currentTime;
-    private int repeatState;
+    private int repeatState = 1;
     private int status = 3;
     private final int isCurrentRepeat = 1;//单曲循环
     private final int isAllRepeat = 2;//全部循环
-    private boolean isNoneShuffle; // 顺序播放
-    private boolean isShuffle;//随机播放
+    private boolean isNoneShuffle = true; // 顺序播放
+    private boolean isShuffle = false;//随机播放
 
     private MusicPlayer musicPlayer;
     private String TAG = "AudioActivity";
@@ -186,32 +186,39 @@ public class AudioActivity extends Activity implements MediaPlayer.OnCompletionL
                     if (repeatState == isAllRepeat) {
                         status = 1;
                         repeatState = isCurrentRepeat;
-                        Log.i(TAG,"isCurrentRepeat");
+                        repeatBtn.setBackgroundResource(R.drawable.repeat_current_selector);
+                        Log.i(TAG, "isCurrentRepeat");
                     } else if (repeatState == isCurrentRepeat) {
                         status = 2;
                         repeatState = isAllRepeat;
-                        Log.i(TAG,"isAllRepeat");
+                        repeatBtn.setBackgroundResource(R.drawable.repeat_all_selector);
+                        Log.i(TAG, "isAllRepeat");
                     }
+                    break;
                 case R.id.shuffle_music:
-                    if (isNoneShuffle){
+                    if (isNoneShuffle) {
                         shuffleBtn.setBackgroundResource(R.drawable.shuffle_selector);
-                        Toast.makeText(AudioActivity.this,R.string.shuffle,Toast.LENGTH_SHORT).show();
-                        isShuffle = false;
-                        isNoneShuffle = true;
-                        status = 3;
-                        repeatBtn.setClickable(false);
-                    }else if (isShuffle){
-                        shuffleBtn.setBackgroundResource(R.drawable.shuffle_none_selector);
-                        Toast.makeText(AudioActivity.this,R.string.shuffle_none,Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AudioActivity.this, R.string.shuffle, Toast.LENGTH_SHORT).show();
                         isShuffle = true;
                         isNoneShuffle = false;
+                        status = 3;
+                        repeatBtn.setClickable(false);
+                        Log.i(TAG, "随机播放");
+                    } else if (isShuffle) {
+                        shuffleBtn.setBackgroundResource(R.drawable.shuffle_none_selector);
+                        Toast.makeText(AudioActivity.this, R.string.shuffle_none, Toast.LENGTH_SHORT).show();
+                        isShuffle = false;
+                        isNoneShuffle = true;
                         status = 4;
                         repeatBtn.setClickable(true);
+                        Log.i(TAG, "正常播放");
                     }
+                    break;
                 case R.id.btnBack:
                     musicPlayer.stop();
                     Log.i(TAG, "stop");
                     finish();
+                    break;
             }
         }
     }

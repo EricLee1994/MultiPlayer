@@ -19,7 +19,8 @@ public class MusicPlayer implements OnBufferingUpdateListener,
     private SeekBar skbProgress;
     private Timer mTimer = new Timer();
     private int position = 0;
-    String TAG ="MusicPlayer";
+    String TAG = "MusicPlayer";
+
     public MusicPlayer(SeekBar skbProgress) {
 
         this.skbProgress = skbProgress;
@@ -82,7 +83,7 @@ public class MusicPlayer implements OnBufferingUpdateListener,
         position = mediaPlayer.getCurrentPosition();
         mediaPlayer.pause();
 
-        Log.e(TAG, "postion=" + position);
+        Log.i(TAG, "postion=" + position);
     }
 
     public void stop() {

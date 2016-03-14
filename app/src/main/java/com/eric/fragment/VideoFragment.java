@@ -24,6 +24,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class VideoFragment extends Fragment {
     public interface OnVideoListener {
@@ -62,21 +63,27 @@ public class VideoFragment extends Fragment {
     private void searchVideo() {
         final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("请输入URL：");
-        View view = LayoutInflater.from(getActivity()).inflate(R.layout.videodialog,null);
+        final View view = LayoutInflater.from(getActivity()).inflate(R.layout.videodialog,null);
         builder.setView(view);
         editUrl = (EditText)view.findViewById(R.id.editUrl);
         builder.setPositiveButton("播放", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 VideoInfo info = new VideoInfo();
-                info.setUrl(editUrl.getText().toString());
-                ((OnVideoListener) getActivity()).onChanged(info);
+                if (editUrl.getText().toString().length() == 0) {
+                    Toast.makeText(getActivity(), "播放地址不能为空", Toast.LENGTH_SHORT).show();
+
+                } else {
+                    info.setUrl(editUrl.getText().toString());
+                    ((OnVideoListener) getActivity()).onChanged(info);
+                }
             }
         });
         builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                builder.show().dismiss();
+
+
             }
         });
         builder.show();

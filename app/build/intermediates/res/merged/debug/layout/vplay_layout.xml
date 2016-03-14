@@ -58,10 +58,10 @@
                 android:background="@drawable/next" />
 
             <Button
-                android:id="@+id/btnadd"
+                android:id="@+id/btnVideoBack"
                 android:layout_width="80dip"
                 android:layout_height="wrap_content"
-                android:background="@drawable/search" />
+                android:background="@drawable/player_back_return" />
         </LinearLayout>
 
     </LinearLayout>

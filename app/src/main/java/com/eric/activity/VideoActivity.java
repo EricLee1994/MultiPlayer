@@ -25,16 +25,13 @@ public class VideoActivity extends Activity {
     private String title;
     private String url;
     private int listPosition;
-    private int currentTime;
-    private int duration;
-    private int flag;
     private SeekBar video_progressBar;
     private VideoPlayer videoPlayer;
     private SurfaceView surfaceView;
     private Button playButton;
     private Button nextButton;
     private Button previousButton;
-    private Button addButton;
+    private Button backButton;
     private EditText editUrl;
     private boolean isPlaying;
     private boolean isFirstTime = true;
@@ -64,9 +61,8 @@ public class VideoActivity extends Activity {
         playButton.setOnClickListener(viewOnClickListener);
         nextButton.setOnClickListener(viewOnClickListener);
         previousButton.setOnClickListener(viewOnClickListener);
-        addButton.setOnClickListener(viewOnClickListener);
-        //repeatButton.setOnClickListener(viewOnClickListener);
-        //shuffleButton.setOnClickListener(viewOnClickListener);
+        backButton.setOnClickListener(viewOnClickListener);
+
 
     }
 
@@ -107,34 +103,16 @@ public class VideoActivity extends Activity {
                     isFirstTime = false;
                     previousVideo();
                     break;
-
-                case R.id.btnadd:
-                    onlineVideo();
+                case R.id.btnVideoBack:
+                    videoPlayer.stop();
+                    Log.i(TAG, "Stop");
+                    finish();
                     break;
             }
 
 
         }
-        private void onlineVideo(){
-            final AlertDialog.Builder builder = new AlertDialog.Builder(VideoActivity.this);
-            builder.setTitle("请输入URL：");
-            View view = LayoutInflater.from(VideoActivity.this).inflate(R.layout.videodialog,null);
-            builder.setView(view);
-            editUrl = (EditText)view.findViewById(R.id.editUrl);
-            builder.setPositiveButton("播放", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    videoPlayer.playUrl(editUrl.getText().toString());
-                }
-            });
-            builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    builder.show().dismiss();
-                }
-            });
-            builder.show();
-        }
+
         private void previousVideo() {
             // TODO Auto-generated method stub
             Log.e(TAG, "prepostion=" + listPosition);
@@ -173,7 +151,7 @@ public class VideoActivity extends Activity {
         playButton = (Button) findViewById(R.id.btnPlayUrl);
         nextButton = (Button) findViewById(R.id.btnNext);
         previousButton = (Button) findViewById(R.id.btnPrevious);
-        addButton = (Button) findViewById(R.id.btnadd);
+        backButton = (Button) findViewById(R.id.btnVideoBack);
     }
 
     private void playvideo() {
@@ -215,8 +193,7 @@ public class VideoActivity extends Activity {
         Bundle bundle = intent.getExtras();
         title = bundle.getString("title");
         url = bundle.getString("url");
-        listPosition = bundle.getInt("listPostion");
-        currentTime = bundle.getInt("currentTime");
-        duration = bundle.getInt("duration");
+        listPosition = bundle.getInt("listPosition");
+        Log.i(TAG,String.valueOf(listPosition));
     }
 }

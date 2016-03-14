@@ -108,7 +108,7 @@ int id btnNext 0x7f0a002b
 int id btnPlayUrl 0x7f0a002a
 int id btnPrevious 0x7f0a0029
 int id btnSearch 0x7f0a0026
-int id btnadd 0x7f0a002c
+int id btnVideoBack 0x7f0a002c
 int id current_progress 0x7f0a0019
 int id editUrl 0x7f0a0024
 int id final_progress 0x7f0a001a
