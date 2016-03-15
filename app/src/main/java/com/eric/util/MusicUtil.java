@@ -113,7 +113,7 @@ public class MusicUtil {
 	public static Bitmap getDefaultArtwork(Context context,boolean small) {
 		BitmapFactory.Options opts = new BitmapFactory.Options();
 		opts.inPreferredConfig = Bitmap.Config.RGB_565;
-		if(small){	//����СͼƬ
+		if(small){
 			return BitmapFactory.decodeStream(context.getResources().openRawResource(R.drawable.music5), null, opts);
 		}
 		return BitmapFactory.decodeStream(context.getResources().openRawResource(R.drawable.defaultalbum), null, opts);

@@ -8,9 +8,13 @@ import com.eric.adapter.MusicListAdapter;
 import com.eric.common.MPCommon;
 import com.eric.entity.Music;
 import com.eric.entity.MusicInfo;
+import com.eric.entity.VideoInfo;
 import com.eric.mutiplayer.R;
+import com.eric.service.Download;
 import com.eric.util.MusicUtil;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -20,10 +24,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MusicFragment extends Fragment {
 	public interface OnMusicListener {
@@ -39,7 +46,8 @@ public class MusicFragment extends Fragment {
 	private TextView musicTitle;
 	private int currentTime;
 	private int duration;
-
+	private Button btnMusicSearch;
+	private EditText editUrl;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -47,15 +55,47 @@ public class MusicFragment extends Fragment {
 				false);
 
 		mMusiclist = (ListView) musicView.findViewById(R.id.music_list);
+		btnMusicSearch =(Button) musicView.findViewById(R.id.btnMusicSearch);
 		musics = MusicUtil.getMusics(getActivity());
 		
 		MPCommon.setMusicList(musics);
 		mMusiclist.setOnItemClickListener(new MusicListItemClickListener());
+		btnMusicSearch.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				searchMusic();
+			}
+		});
 		listAdapter = new MusicListAdapter(this.getActivity(), musics);
 		mMusiclist.setAdapter(listAdapter);
 		return musicView;
 	}
+	private void searchMusic(){
+		final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+		builder.setTitle("请输入URL：");
+		final View view = LayoutInflater.from(getActivity()).inflate(R.layout.videodialog,null);
+		builder.setView(view);
+		editUrl = (EditText)view.findViewById(R.id.editUrl);
+		builder.setPositiveButton("下载", new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialogInterface, int i) {
+				if (editUrl.getText().toString().length() == 0) {
+					Toast.makeText(getActivity(), "下载地址不能为空", Toast.LENGTH_SHORT).show();
 
+				} else {
+					Download download = new Download();
+					download.download(editUrl.getText().toString());
+				}
+			}
+		});
+		builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialogInterface, int i) {
+
+			}
+		});
+		builder.show();
+	}
 	private class MusicListItemClickListener implements OnItemClickListener {
 
 		@Override
