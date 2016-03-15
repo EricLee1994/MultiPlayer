@@ -72,17 +72,17 @@ public class MusicListAdapter extends BaseAdapter{
 				viewHolder.albumImage.setImageBitmap(bitmap);
 			}
 		}
-			viewHolder.musicTitle.setText(music.getTitle());			//��ʾ����
-			viewHolder.musicArtist.setText(music.getArtist());		//��ʾ������
-			viewHolder.musicDuration.setText(MusicUtil.formatTime(music.getDuration()));//��ʾʱ��
+			viewHolder.musicTitle.setText(music.getTitle());
+			viewHolder.musicArtist.setText(music.getArtist());
+			viewHolder.musicDuration.setText(MusicUtil.formatTime(music.getDuration()));
 			
 			return convertView;
 		}
 	public class ViewHolder {
-		//���пؼ���������
-		public ImageView albumImage;	//ר��ͼƬ
-		public TextView musicTitle;		//���ֱ���
-		public TextView musicDuration;	//����ʱ��
-		public TextView musicArtist;	//����������
+
+		public ImageView albumImage;
+		public TextView musicTitle;
+		public TextView musicDuration;
+		public TextView musicArtist;
 	}
 }
