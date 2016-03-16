@@ -123,22 +123,21 @@ public final class R {
     }
     public static final class id {
         public static final int RelativeLayout1=0x7f0a0005;
-        public static final int action_settings=0x7f0a002e;
+        public static final int action_settings=0x7f0a002d;
         public static final int albumImage=0x7f0a0006;
         public static final int audioTrack=0x7f0a0019;
         public static final int btnBack=0x7f0a000e;
         public static final int btnMusicSearch=0x7f0a000c;
-        public static final int btnNext=0x7f0a002c;
-        public static final int btnPlayUrl=0x7f0a002b;
-        public static final int btnPrevious=0x7f0a002a;
-        public static final int btnSearch=0x7f0a0027;
-        public static final int btnVideoBack=0x7f0a002d;
+        public static final int btnNext=0x7f0a002b;
+        public static final int btnPlayUrl=0x7f0a002a;
+        public static final int btnPrevious=0x7f0a0029;
+        public static final int btnSearch=0x7f0a0026;
+        public static final int btnVideoBack=0x7f0a002c;
         public static final int current_progress=0x7f0a001a;
-        public static final int editUrl=0x7f0a0025;
+        public static final int editUrl=0x7f0a0024;
         public static final int final_progress=0x7f0a001b;
         public static final int footer_layout=0x7f0a0017;
         public static final int header_layout=0x7f0a000d;
-        public static final int ibtn_player_voice=0x7f0a0021;
         public static final int infoOperating=0x7f0a0016;
         public static final int iv_player_max_voice=0x7f0a0014;
         public static final int iv_player_min_voice=0x7f0a0013;
@@ -159,16 +158,16 @@ public final class R {
         public static final int sb_player_voice=0x7f0a0015;
         public static final int seekbarLayout=0x7f0a0018;
         public static final int shuffle_music=0x7f0a000f;
-        public static final int skbProgress=0x7f0a0029;
-        public static final int surfaceView1=0x7f0a0028;
+        public static final int skbProgress=0x7f0a0028;
+        public static final int surfaceView1=0x7f0a0027;
         public static final int tv_tab_music=0x7f0a0001;
         public static final int tv_tab_setting=0x7f0a0003;
         public static final int tv_tab_video=0x7f0a0002;
         public static final int vPager=0x7f0a0004;
-        public static final int video_Artist=0x7f0a0024;
-        public static final int video_duration=0x7f0a0022;
-        public static final int video_list=0x7f0a0026;
-        public static final int video_title=0x7f0a0023;
+        public static final int video_Artist=0x7f0a0023;
+        public static final int video_duration=0x7f0a0021;
+        public static final int video_list=0x7f0a0025;
+        public static final int video_title=0x7f0a0022;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;

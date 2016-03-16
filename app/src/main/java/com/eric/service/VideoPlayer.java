@@ -235,12 +235,12 @@ public class VideoPlayer implements MediaPlayer.OnBufferingUpdateListener,
     public void onPrepared(MediaPlayer arg0) {
         // TODO Auto-generated method stub
         videoWidth = mediaPlayer.getVideoWidth();
-        videoHeight =mediaPlayer.getVideoHeight();
+        videoHeight = mediaPlayer.getVideoHeight();
         Log.i(TAG, "width =" + videoWidth);
         Log.i(TAG, "height =" + videoHeight);
         if (videoWidth > screenWidth || videoHeight > screenHeight) {
-            float heightRatio = (float)videoHeight / screenHeight;
-            float widthRatio = (float)videoWidth / screenWidth;
+            float heightRatio = (float) videoHeight / screenHeight;
+            float widthRatio = (float) videoWidth / screenWidth;
             if (heightRatio > 1 || widthRatio > 1) {
                 if (heightRatio > widthRatio) {
                     videoHeight = (int) Math.ceil((float) videoHeight / heightRatio);
@@ -283,6 +283,7 @@ public class VideoPlayer implements MediaPlayer.OnBufferingUpdateListener,
 //		}
     }
 
+    //定义一个回调接口, 该接口的作用是在流媒体缓冲状态发生改变的时候, 标明该状态
     @Override
     public void onBufferingUpdate(MediaPlayer arg0, int bufferingProgress) {
         // TODO Auto-generated method stub

@@ -110,7 +110,7 @@ public class MusicPlayer implements OnBufferingUpdateListener,
         skbProgress.setSecondaryProgress(bufferingProgress);
         int currentProgress = skbProgress.getMax()
                 * mediaPlayer.getCurrentPosition() / mediaPlayer.getDuration();
-        Log.e(currentProgress + "% play", bufferingProgress + "% buffer");
+        Log.i(TAG, currentProgress + "% play"+bufferingProgress + "% buffer");
     }
 
     @Override

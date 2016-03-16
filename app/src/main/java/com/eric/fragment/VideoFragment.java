@@ -28,7 +28,7 @@ import android.widget.Toast;
 
 public class VideoFragment extends Fragment {
     public interface OnVideoListener {
-        abstract void onChanged(VideoInfo info);
+         void onChanged(VideoInfo info);
     }
 
     private List<Videofile> videofiles = null;
@@ -41,14 +41,9 @@ public class VideoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View videoView = inflater.inflate(R.layout.videoplayer, container, false);
+
         mVideoList = (ListView) videoView.findViewById(R.id.video_list);
         videofiles = VideoUtil.getVideos(getActivity());
-
-        MPCommon.setVideoList(videofiles);
-        mVideoList.setOnItemClickListener(new VideoListItemClickListener());
-
-        listAdapter = new VideoListAdapter(this.getActivity(), videofiles);
-        mVideoList.setAdapter(listAdapter);
         searchBtn = (Button)videoView.findViewById(R.id.btnSearch);
         searchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,6 +51,12 @@ public class VideoFragment extends Fragment {
                 searchVideo();
             }
         });
+
+        MPCommon.setVideoList(videofiles);
+        mVideoList.setOnItemClickListener(new VideoListItemClickListener());
+        listAdapter = new VideoListAdapter(this.getActivity(), videofiles);
+        mVideoList.setAdapter(listAdapter);
+
         return videoView;
 
     }

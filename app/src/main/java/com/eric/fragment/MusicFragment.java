@@ -33,107 +33,101 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MusicFragment extends Fragment {
-	public interface OnMusicListener {
-		abstract void onChanged(MusicInfo info);
-	}
+    public interface OnMusicListener {
+        void onChanged(MusicInfo info);
+    }
 
-	private ListView mMusiclist;
-	MusicListAdapter listAdapter;
-	private List<Music> musics = null;
-	private int listPosition = 0;
+    private ListView mMusiclist;
+    MusicListAdapter listAdapter;
+    private List<Music> musics = null;
+    private int listPosition = 0;
 
-	private ImageView musicAlbum;
-	private TextView musicTitle;
-	private int currentTime;
-	private int duration;
-	private Button btnMusicSearch;
-	private EditText editUrl;
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		View musicView = inflater.inflate(R.layout.musicplayer, container,
-				false);
+    //    private ImageView musicAlbum;
+//    private TextView musicTitle;
+    private int currentTime;
+    //    private int duration;
+    private Button btnMusicSearch;
+    private EditText editUrl;
 
-		mMusiclist = (ListView) musicView.findViewById(R.id.music_list);
-		btnMusicSearch =(Button) musicView.findViewById(R.id.btnMusicSearch);
-		musics = MusicUtil.getMusics(getActivity());
-		
-		MPCommon.setMusicList(musics);
-		mMusiclist.setOnItemClickListener(new MusicListItemClickListener());
-		btnMusicSearch.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				searchMusic();
-			}
-		});
-		listAdapter = new MusicListAdapter(this.getActivity(), musics);
-		mMusiclist.setAdapter(listAdapter);
-		return musicView;
-	}
-	private void searchMusic(){
-		final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-		builder.setTitle("请输入URL：");
-		final View view = LayoutInflater.from(getActivity()).inflate(R.layout.videodialog,null);
-		builder.setView(view);
-		editUrl = (EditText)view.findViewById(R.id.editUrl);
-		builder.setPositiveButton("下载", new DialogInterface.OnClickListener() {
-			@Override
-			public void onClick(DialogInterface dialogInterface, int i) {
-				if (editUrl.getText().toString().length() == 0) {
-					Toast.makeText(getActivity(), "下载地址不能为空", Toast.LENGTH_SHORT).show();
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View musicView = inflater.inflate(R.layout.musicplayer, container,
+                false);
 
-				} else {
-					Download download = new Download();
-					download.download(editUrl.getText().toString());
-				}
-			}
-		});
-		builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
-			@Override
-			public void onClick(DialogInterface dialogInterface, int i) {
+        mMusiclist = (ListView) musicView.findViewById(R.id.music_list);
+        btnMusicSearch = (Button) musicView.findViewById(R.id.btnMusicSearch);
+        mMusiclist.setOnItemClickListener(new MusicListItemClickListener());
+        btnMusicSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                searchMusic();
+            }
+        });
 
-			}
-		});
-		builder.show();
-	}
-	private class MusicListItemClickListener implements OnItemClickListener {
+        musics = MusicUtil.getMusics(getActivity());//获取音乐list
 
-		@Override
-		public void onItemClick(AdapterView<?> parent, View view, int position,
-				long id) {
-			listPosition = position;
-			playMusic(listPosition);
-		}
+        MPCommon.setMusicList(musics);//list设为全局变量
 
-		private void playMusic(int listPosition) {
-			// TODO Auto-generated method stub
-			Music mp3Info = musics.get(listPosition);
-			//musicTitle.setText(mp3Info.getTitle());
-			Bitmap bitmap = MusicUtil.getArtwork(getActivity(),
-					mp3Info.getId(), mp3Info.getAlbumId(), true, true);
-			//musicAlbum.setImageBitmap(bitmap);
-			MusicInfo mInfo = new MusicInfo();
-			mInfo.setTitle(mp3Info.getTitle());
-			mInfo.setCurrentTime(currentTime);
-			mInfo.setArtist(mp3Info.getArtist());
-			mInfo.setListPosition(listPosition);
-			mInfo.setUrl(mp3Info.getUrl());
-			
-			Log.i("TAG", "@@"+getActivity().toString());
-			
-			// Intent intent = new Intent(getActivity(), AudioActivity.class);
-			// intent.putExtra("title", );
-			// intent.putExtra("url", );
-			// intent.putExtra("artist", );
-			// intent.putExtra("listPosition", listPosition);
-			// intent.putExtra("currentTime", currentTime);
+        listAdapter = new MusicListAdapter(this.getActivity(), musics);
+        mMusiclist.setAdapter(listAdapter);
 
-			// intent.putExtra("repeatState", repeatState);
-			// intent.putExtra("shuffleState", isShuffle);
-			// intent.putExtra("MSG", AppConstant.PlayerMsg.PLAY_MSG);
-			// startActivity(intent);
+        return musicView;
+    }
 
-			((OnMusicListener) getActivity()).onChanged(mInfo);
-		}
-	}
+    private void searchMusic() {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle("请输入URL：");
+        final View view = LayoutInflater.from(getActivity()).inflate(R.layout.videodialog, null);
+        builder.setView(view);
+        editUrl = (EditText) view.findViewById(R.id.editUrl);
+        builder.setPositiveButton("下载", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                if (editUrl.getText().toString().length() == 0) {
+                    Toast.makeText(getActivity(), "下载地址不能为空", Toast.LENGTH_SHORT).show();
+
+                } else {
+                    Download download = new Download();
+                    download.download(editUrl.getText().toString());
+                }
+            }
+        });
+        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+        builder.show();
+    }
+
+    private class MusicListItemClickListener implements OnItemClickListener {
+
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position,
+                                long id) {
+            listPosition = position;
+            playMusic(listPosition);
+        }
+
+        private void playMusic(int listPosition) {
+            // TODO Auto-generated method stub
+            Music mp3Info = musics.get(listPosition);//获取目标的信息
+            //musicTitle.setText(mp3Info.getTitle());
+            //Bitmap bitmap = MusicUtil.getArtwork(getActivity(),
+            //      mp3Info.getId(), mp3Info.getAlbumId(), true, true);
+            //musicAlbum.setImageBitmap(bitmap);
+            MusicInfo mInfo = new MusicInfo();
+            mInfo.setTitle(mp3Info.getTitle());
+            mInfo.setCurrentTime(currentTime);
+            mInfo.setArtist(mp3Info.getArtist());
+            mInfo.setListPosition(listPosition);
+            mInfo.setUrl(mp3Info.getUrl());
+
+            Log.i("TAG", getActivity().toString());
+
+            ((OnMusicListener) getActivity()).onChanged(mInfo);
+        }
+    }
 }

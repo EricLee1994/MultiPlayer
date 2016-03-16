@@ -3,13 +3,13 @@
     android:id="@+id/RelativeLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/main_bg03" >
+    android:background="@drawable/main_bg03">
 
     <RelativeLayout
         android:id="@+id/header_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true" >
+        android:layout_alignParentTop="true">
 
         <Button
             android:id="@+id/btnBack"
@@ -52,40 +52,40 @@
             android:text="@string/artist"
             android:textColor="#0F0"
             android:textSize="18sp" />
-    </RelativeLayout>	
-     
+    </RelativeLayout>
+
     <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/header_layout" >  
-<!--         <RelativeLayout -->
-<!--             android:layout_width="match_parent" -->
-<!--             android:layout_height="match_parent" > -->
+        android:layout_below="@+id/header_layout">
+        <!--         <RelativeLayout -->
+        <!--             android:layout_width="match_parent" -->
+        <!--             android:layout_height="match_parent" > -->
 
-<!--             自定义滑动页面类的 -->
+        <!--             自定义滑动页面类的 -->
 
-<!--             <com.wwj.sb.custom.FlingGalleryView -->
-<!--                 android:id="@+id/fgv_player_main" -->
-<!--                 android:layout_width="match_parent" -->
-<!--                 android:layout_height="match_parent" -->
-<!--                 android:layout_centerInParent="true" > -->
+        <!--             <com.wwj.sb.custom.FlingGalleryView -->
+        <!--                 android:id="@+id/fgv_player_main" -->
+        <!--                 android:layout_width="match_parent" -->
+        <!--                 android:layout_height="match_parent" -->
+        <!--                 android:layout_centerInParent="true" > -->
 
-<!--                 <include -->
-<!--                     android:id="@+id/player_main_album" -->
-<!--                     layout="@layout/music_album" /> -->
+        <!--                 <include -->
+        <!--                     android:id="@+id/player_main_album" -->
+        <!--                     layout="@layout/music_album" /> -->
 
-<!--                 <include -->
-<!--                     android:id="@+id/player_main_lyric" -->
-<!--                     layout="@layout/music_lyric" /> -->
-<!--             </com.wwj.sb.custom.FlingGalleryView> -->
-<!--         </RelativeLayout> -->
+        <!--                 <include -->
+        <!--                     android:id="@+id/player_main_lyric" -->
+        <!--                     layout="@layout/music_lyric" /> -->
+        <!--             </com.wwj.sb.custom.FlingGalleryView> -->
+        <!--         </RelativeLayout> -->
 
         <RelativeLayout
             android:id="@+id/ll_player_voice"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/player_progresslayout_bg"
-            android:visibility="invisible" >
+            android:visibility="invisible">
 
             <ImageView
                 android:id="@+id/iv_player_min_voice"
@@ -121,11 +121,10 @@
             android:id="@+id/infoOperating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:scaleType="center"
+            android:layout_below="@+id/ll_player_voice"
             android:layout_gravity="center"
-            android:src="@drawable/musiclogo"
-            android:layout_below="@+id/ll_player_voice" 
-             />
+            android:scaleType="center"
+            android:src="@drawable/musiclogo" />
 
     </FrameLayout>
 
@@ -133,13 +132,13 @@
         android:id="@+id/footer_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true" >
+        android:layout_alignParentBottom="true">
 
         <RelativeLayout
             android:id="@+id/seekbarLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/player_progresslayout_bg" >
+            android:background="@drawable/player_progresslayout_bg">
 
             <SeekBar
                 android:id="@+id/audioTrack"
@@ -168,13 +167,13 @@
             android:id="@+id/relativeLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/seekbarLayout" >
+            android:layout_below="@+id/seekbarLayout">
 
             <Button
                 android:id="@+id/play_music"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-              
+
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/play_selector" />
 
@@ -202,13 +201,7 @@
                 android:layout_toRightOf="@+id/next_music"
                 android:background="@drawable/repeat_none_selector" />
 
-            <ImageButton
-                android:id="@+id/ibtn_player_voice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:background="@drawable/player_btn_voice" />
+
         </RelativeLayout>
     </RelativeLayout>
 

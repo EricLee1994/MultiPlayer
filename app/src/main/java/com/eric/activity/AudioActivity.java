@@ -60,8 +60,8 @@ public class AudioActivity extends Activity implements MediaPlayer.OnCompletionL
         getMusicData();
         findAudioViewById();
         setViewOnclickListener();
-        setAnimation();
-        initView();
+        setAnimation();//播放动画
+        initView();//初始化歌名和歌手
         playMusic();
 
     }
@@ -120,6 +120,7 @@ public class AudioActivity extends Activity implements MediaPlayer.OnCompletionL
     @Override
     public void onCompletion(MediaPlayer mediaPlayer) {
         if (status == 1) {
+            Log.i(TAG,"1");
             mediaPlayer.start();
         } else if (status == 2) {
             listPosition++;
@@ -254,10 +255,6 @@ public class AudioActivity extends Activity implements MediaPlayer.OnCompletionL
         }
     }
 
-
-    private void repeat_one() {
-
-    }
 
     private void setAnimation() {
         // TODO Auto-generated method stub

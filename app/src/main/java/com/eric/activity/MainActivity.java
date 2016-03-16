@@ -29,7 +29,6 @@ public class MainActivity extends FragmentActivity implements
     private TextView mTxtMusic, mTxtVideo, mTxtSetting;
     private int currIndex;// 当前页
     private Resources resources;
-    MusicPlayer musicPlayer;
     String TAG = "MainActivity";
 
     @Override
@@ -38,14 +37,13 @@ public class MainActivity extends FragmentActivity implements
         setContentView(R.layout.activity_main);
         resources = getResources();
 
-
         InitTextView();
         InitViewPager();
     }
 
-    /*
-     * 初始化标签
-     */
+
+    //初始化标签
+
     public void InitTextView() {
         mTxtMusic = (TextView) findViewById(R.id.tv_tab_music);
         mTxtVideo = (TextView) findViewById(R.id.tv_tab_video);
@@ -56,7 +54,11 @@ public class MainActivity extends FragmentActivity implements
         mTxtSetting.setOnClickListener(new txListener(2));
     }
 
+
+    // 点击标签,切换页面
+
     public class txListener implements View.OnClickListener {
+
         private int index = 0;
 
         public txListener(int i) {
@@ -70,9 +72,9 @@ public class MainActivity extends FragmentActivity implements
         }
     }
 
-    /*
-     * 初始化ViewPager
-     */
+
+    //初始化ViewPager
+
     public void InitViewPager() {
         mPager = (ViewPager) findViewById(R.id.vPager);
         fragmentList = new ArrayList<Fragment>();
@@ -91,7 +93,7 @@ public class MainActivity extends FragmentActivity implements
 
     }
 
-
+    //滑动Fragment
     public class MyOnPageChangeListener implements OnPageChangeListener {
 
         @Override
@@ -147,6 +149,8 @@ public class MainActivity extends FragmentActivity implements
             currIndex = arg0;
         }
     }
+
+    //将歌曲和视频信息放入intent中。
 
     @Override
     public void onChanged(MusicInfo info) {
